@@ -1,4 +1,4 @@
-import { DomainError } from '../../../domainError'
+import { DomainError } from '../../../errors/domainError'
 
 export class DefaultGatewayError extends Error implements DomainError {
   constructor (ip: string) {
