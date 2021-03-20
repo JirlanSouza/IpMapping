@@ -1,1 +1,2 @@
-export * 'name.ts'
+export * from './name'
+export * from './description'
