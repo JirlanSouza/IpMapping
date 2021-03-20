@@ -11,6 +11,8 @@ export class device {
   }
 
   public create (): void | Error {
-    this.data.ip = ip(this.dataInput.ip)
+    const ipValidated = ip(this.dataInput.ip)
+
+    if (typeof ipValidated === 'string') this.data.ip = ipValidated
   }
 }
