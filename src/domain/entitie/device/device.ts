@@ -1,8 +1,8 @@
 import { Either, left, right } from '../../../util/either'
 import { DeviceDataInput } from './deviceDataInput'
 import { DeviceDTO } from './deviceDTO'
-import { IpError, DefaultGatewayError } from './errors'
-import { Ip, DefaultGateway } from './objectValues'
+import { DeviceErrors } from './errors/deviceErrors'
+import { Name, Ip, DefaultGateway, Description } from './objectValues'
 
 export class Device {
   public readonly data: DeviceDTO
@@ -11,21 +11,27 @@ export class Device {
     this.data = data
   }
 
-  public create (dataInput: DeviceDataInput): Either<IpError | DefaultGatewayError, Device> {
-    const ipValidated = Ip.create(dataInput.ip)
+  public create (dataInput: DeviceDataInput): Either< DeviceErrors, Device> {
+    const nameValidated = Name.create(dataInput.ip)
+    if (nameValidated.isLeft()) return left(nameValidated.value)
 
+    const ipValidated = Ip.create(dataInput.ip)
     if (ipValidated.isLeft()) return left(ipValidated.value)
 
     const defaultGatewayValidated = DefaultGateway.create(dataInput.defalutGateway)
     if (defaultGatewayValidated.isLeft()) return left(defaultGatewayValidated.value)
 
-    const { type, name, subMasc } = dataInput
+    const descriptionValidated = Description.create(dataInput.ip)
+    if (descriptionValidated.isLeft()) return left(descriptionValidated.value)
+
+    const { type, subMasc } = dataInput
     return right(new Device({
       type,
-      name,
+      name: nameValidated.value,
       ip: ipValidated.value,
       subMasc,
-      defalutGateway: defaultGatewayValidated.value
+      defalutGateway: defaultGatewayValidated.value,
+      description: descriptionValidated.value
     }))
   }
 }

@@ -1,9 +1,10 @@
-import { Ip, DefaultGateway } from './objectValues'
+import { Name, Ip, DefaultGateway, Description } from './objectValues'
 
 export interface DeviceDTO {
   type: string,
-  name: string,
+  name: Name,
   ip: Ip,
   subMasc: string,
   defalutGateway: DefaultGateway
+  description: Description
 }
