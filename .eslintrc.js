@@ -4,8 +4,8 @@ module.exports = {
     es2021: true
   },
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'standard'
+    //'plugin:@typescript-eslint/recommended',
+    'standard-with-typescript'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -16,5 +16,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    //no-namespace: { allowDeclarations: false, allowDefinitionFiles: true }
   }
 }
