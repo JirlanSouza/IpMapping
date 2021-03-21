@@ -24,7 +24,7 @@ export class Name {
     name.trim()
     let isInvalidIp = false
 
-    if (name.length >= 2 && name.length <= 80) {
+    if (name.length < 2 && name.length > 80) {
       isInvalidIp = true
     }
     return {

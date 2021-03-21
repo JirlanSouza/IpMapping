@@ -3,5 +3,6 @@ export interface DeviceDataInput {
   name: string,
   ip: string,
   subMasc: string,
-  defalutGateway: string
+  defalutGateway: string,
+  description: string
 }

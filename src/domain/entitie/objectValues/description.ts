@@ -24,7 +24,7 @@ export class Description {
     description.trim()
     let isInvalidIp = false
 
-    if (description.length >= 10 && description.length <= 200) {
+    if (description.length < 10 && description.length > 200) {
       isInvalidIp = true
     }
     return {

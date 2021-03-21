@@ -5,6 +5,15 @@ export interface RepositorieError extends Error {
   name: string
 }
 
+export interface DeviceDataToRepositorie {
+  type: string,
+  name: string,
+  ip: string,
+  subMasc: string,
+  defaultGateway: string,
+  description: string
+}
+
 export interface DeviceRepositorie {
-  save: (device: DeviceDTO) => Promise<Either<RepositorieError, void>>
+  save: (deviceData: DeviceDataToRepositorie) => Promise<Either<RepositorieError, void>>
 }

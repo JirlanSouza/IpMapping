@@ -11,7 +11,7 @@ export class Device {
     this.data = data
   }
 
-  public create (dataInput: DeviceDataInput): Either< DeviceErrors, Device> {
+  public static create (dataInput: DeviceDataInput): Either< DeviceErrors, Device> {
     const nameValidated = Name.create(dataInput.name)
     if (nameValidated.isLeft()) return left(nameValidated.value)
 
@@ -21,7 +21,7 @@ export class Device {
     const defaultGatewayValidated = DefaultGateway.create(dataInput.defalutGateway)
     if (defaultGatewayValidated.isLeft()) return left(defaultGatewayValidated.value)
 
-    const descriptionValidated = Description.create(dataInput.ip)
+    const descriptionValidated = Description.create(dataInput.description)
     if (descriptionValidated.isLeft()) return left(descriptionValidated.value)
 
     const { type, subMasc } = dataInput
@@ -30,7 +30,7 @@ export class Device {
       name: nameValidated.value,
       ip: ipValidated.value,
       subMasc,
-      defalutGateway: defaultGatewayValidated.value,
+      defaultGateway: defaultGatewayValidated.value,
       description: descriptionValidated.value
     }))
   }

@@ -5,6 +5,6 @@ export interface DeviceDTO {
   name: Name,
   ip: Ip,
   subMasc: string,
-  defalutGateway: DefaultGateway
+  defaultGateway: DefaultGateway
   description: Description
 }
