@@ -1,12 +1,13 @@
 import { Either } from '../../../util/either'
 import { DeviceDataInput, DeviceDTO } from '../../entitie/device'
 import { DeviceErrors } from '../../entitie/device/errors/deviceErrors'
+import { RepositorieError } from './deviceRepositorie'
 
 export interface SaveDevice {
-  save: (diviceDataInput: DeviceDataInput) => Promise<Either<DeviceErrors, DeviceDTO>>
+  save: (params: SaveDevice.Params) => SaveDevice.Result
 }
 
-namespace SaveDevice {
+export namespace SaveDevice {
   export type Params = DeviceDataInput
-  export type Result = DeviceDTO
+  export type Result = Promise<Either<DeviceErrors | RepositorieError, DeviceDTO>>
 }
