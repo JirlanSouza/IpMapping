@@ -1,5 +1,5 @@
 import { SaveNewDevice } from '@useCases'
-import { FileDeviceRepositorie } from './infrastructure/data/device/fileDeviceRepositorie'
+import { FileDeviceRepositorie } from '@infrastructure'
 
 export default async () => {
   const saveDevice = new SaveNewDevice(new FileDeviceRepositorie)
