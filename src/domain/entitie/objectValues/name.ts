@@ -14,10 +14,10 @@ export class Name {
   }
 
   static create (name: string): Either<NameError, Name> {
-    const ipValidate = this.validate(name)
-    if (!ipValidate.isValid) return left(new NameError(name))
+    const nameValidate = this.validate(name)
+    if (!nameValidate.isValid) return left(new NameError(name))
 
-    return right(new Name(ipValidate.nameValidated))
+    return right(new Name(nameValidate.nameValidated))
   }
 
   private static validate (name: string): { nameValidated: string, isValid: boolean } {
