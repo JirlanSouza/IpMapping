@@ -12,7 +12,7 @@ export class Device {
   }
 
   public create (dataInput: DeviceDataInput): Either< DeviceErrors, Device> {
-    const nameValidated = Name.create(dataInput.ip)
+    const nameValidated = Name.create(dataInput.name)
     if (nameValidated.isLeft()) return left(nameValidated.value)
 
     const ipValidated = Ip.create(dataInput.ip)

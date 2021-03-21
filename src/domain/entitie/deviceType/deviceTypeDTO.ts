@@ -1,7 +1,6 @@
-import { Name, Description } from '../objectValues'
+import { Name } from '../objectValues'
 
-export interface DeviceTypeDataInput {
+export interface DeviceTypeDTO {
   id: string,
-  name: Name,
-  description: Description
+  name: Name
 }
