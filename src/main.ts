@@ -1,7 +1,5 @@
-import { left, right } from './util/either'
-import { Device } from './domain/entitie/device'
-import { SaveNewDevice } from './domain/useCases/device/saveNewDevice'
-import { FileDeviceRepositorie } from './data/device/fileDeviceRepositorie'
+import { SaveNewDevice } from '@useCases'
+import { FileDeviceRepositorie } from './infrastructure/data/device/fileDeviceRepositorie'
 
 export default async () => {
   const saveDevice = new SaveNewDevice(new FileDeviceRepositorie)

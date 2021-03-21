@@ -7,7 +7,9 @@
     "dev": "nodemon src/server.ts",
     "build": "sucrase ./src -d ./dist --tranforms typscript,imports"
   },
-  "dependencies": {},
+  "dependencies": {
+    "uuidv4": "^6.2.6"
+  },
   "devDependencies": {
     "@types/node": "^14.14.35",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
