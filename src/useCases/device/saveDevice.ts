@@ -1,10 +1,9 @@
-import { Either } from '../../util/either'
-import { DeviceDataInput, DeviceDTO } from '../../entities/device'
-import { DeviceErrors } from '../../entities/device/errors/deviceErrors'
+import { Either } from '@shared'
+import { DeviceDataInput, DeviceDTO, DeviceErrors } from '@entities'
 import { RepositorieError } from './deviceRepositorie'
 
 export interface SaveDevice {
-  save: (params: SaveDevice.Params) => SaveDevice.Result
+  execute: (params: SaveDevice.Params) => SaveDevice.Result
 }
 
 export namespace SaveDevice {

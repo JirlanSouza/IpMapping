@@ -8,12 +8,10 @@ export class SaveNewDevice implements SaveDevice {
 
   }
 
-  async save(params: SaveDevice.Params): Promise<Either<DeviceErrors | RepositorieError, DeviceDTO>> {
+  async execute (params: SaveDevice.Params): Promise<Either<DeviceErrors | RepositorieError, DeviceDTO>> {
     const device = Device.create(params)
 
-    if (device.isLeft()) {
-      return left(device.value)
-    }
+    if (device.isLeft()) return left(device.value)
 
     const { type, name, ip, subMasc, defaultGateway, description } = device.value.data
     const deviceDataToRepositorie = {
