@@ -1,8 +1,6 @@
-import { Either, left, right } from '../../util/either'
-import { DeviceDataInput } from './deviceDataInput'
-import { DeviceDTO } from './deviceDTO'
-import { DeviceErrors } from './errors/deviceErrors'
-import { Name, Ip, DefaultGateway, Description } from './objectValues'
+import { Either, left, right } from '@shared'
+import { DeviceDataInput, DeviceDTO, DeviceErrors, IdProviderFactory } from '@entities'
+import { Name, Ip, DefaultGateway, Description, Id } from './objectValues'
 
 export class Device {
   public readonly data: DeviceDTO
@@ -11,7 +9,9 @@ export class Device {
     this.data = data
   }
 
-  public static create (dataInput: DeviceDataInput): Either< DeviceErrors, Device> {
+  public static create (dataInput: DeviceDataInput, id?: Id): Either< DeviceErrors, Device> {
+      const newId = id ? id : Id.create()
+
     const nameValidated = Name.create(dataInput.name)
     if (nameValidated.isLeft()) return left(nameValidated.value)
 
@@ -26,6 +26,7 @@ export class Device {
 
     const { type, subMasc } = dataInput
     return right(new Device({
+      id: newId,
       type,
       name: nameValidated.value,
       ip: ipValidated.value,

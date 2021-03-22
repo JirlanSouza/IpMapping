@@ -1,30 +1,19 @@
-import { Either, left, right } from '@shared'
-import { IdError, IdProvider } from '@entities'
+import { IdProviderFactory } from '@entities'
 
 export class Id {
-  private idProvider: IdProvider
-  private id: string
+  private readonly id: string
 
-  constructor (idProvider: IdProvider, id?: string) {
-    this.idProvider = idProvider
-
-    if (id) {
-      this.id = id
-    } else {
-      this.id = this.idProvider.create()
-    }
+  constructor(id: string) {
+    this.id = id
     Object.freeze(this)
   }
 
-  get value (): string {
-    return this.id
+  public static create(): Id {
+    const idProvider = IdProviderFactory.getStance().getIdProvider()
+    return  new Id(idProvider.create())     
   }
 
-  private validate (id: string): Either<IdError, string> {
-    id.trim()
-    if (this.idProvider.validate(id)) {
-      return right(id)
-    }
-    return left(new IdError(id))
+  get value(): string {
+    return this.id
   }
 }
