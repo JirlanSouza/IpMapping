@@ -1,6 +1,5 @@
-import { Either, left, right } from '../../util/either';
-import { Device, DeviceDTO } from '../../entities/device';
-import { DeviceErrors } from '../../entities/device/errors/deviceErrors';
+import { Either, left, right } from '@shared';
+import { Device, DeviceDTO, DeviceErrors } from '@entities';
 import { DeviceRepositorie, RepositorieError } from './deviceRepositorie';
 import { SaveDevice } from './saveDevice'
 

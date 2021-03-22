@@ -10,7 +10,7 @@ export class Id {
 
   public static create(): Id {
     const idProvider = IdProviderFactory.getStance().getIdProvider()
-    return  new Id(idProvider.create())     
+    return  new Id(idProvider.create())    
   }
 
   get value(): string {

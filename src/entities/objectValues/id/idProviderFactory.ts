@@ -1,15 +1,17 @@
 import { IdProvider } from '@entities'
 
 export class IdProviderFactory {
-  public static stance: IdProviderFactory
+  public static _stance: IdProviderFactory
   private idProvider: IdProvider
 
-  public static getStance () {
-    if(this.stance) {
-      return this.stance
-    }
+  private constructor () {}
 
-    return new IdProviderFactory()
+  public static getStance () {
+    if(!IdProviderFactory._stance) {
+      this._stance = new IdProviderFactory()
+    }
+    return IdProviderFactory._stance
+
   }
 
   public initialize (idProvider: IdProvider)   {
