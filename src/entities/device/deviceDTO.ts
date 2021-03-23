@@ -1,8 +1,9 @@
 import { Id, Name, Ip, DefaultGateway, Description } from './objectValues'
+import { DeviceType } from '@entities'
 
 export interface DeviceDTO {
   id: Id,
-  type: string,
+  type: DeviceType,
   name: Name,
   ip: Ip,
   subMasc: string,

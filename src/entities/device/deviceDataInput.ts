@@ -1,8 +1,10 @@
+import { DeviceType } from "@entities";
+
 export interface DeviceDataInput {
-  type: string,
+  type: DeviceType,
   name: string,
   ip: string,
   subMasc: string,
-  defalutGateway: string,
+  defaultGateway: string,
   description: string
 }

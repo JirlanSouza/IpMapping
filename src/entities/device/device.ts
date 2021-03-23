@@ -18,7 +18,7 @@ export class Device {
     const ipValidated = Ip.create(dataInput.ip)
     if (ipValidated.isLeft()) return left(ipValidated.value)
 
-    const defaultGatewayValidated = DefaultGateway.create(dataInput.defalutGateway)
+    const defaultGatewayValidated = DefaultGateway.create(dataInput.defaultGateway)
     if (defaultGatewayValidated.isLeft()) return left(defaultGatewayValidated.value)
 
     const descriptionValidated = Description.create(dataInput.description)
