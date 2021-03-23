@@ -1,12 +1,11 @@
 import { Either, left, right } from '@shared'
-import { DeviceTypeDataInput, DeviceTypeDTO, NameError, Name } from '@entities'
+import { Entitie, DeviceTypeDataInput, DeviceTypeDTO, NameError, Name } from '@entities'
 
-export class DeviceType {
+export class DeviceType extends Entitie<DeviceTypeDTO> {
   public readonly data: DeviceTypeDTO
 
   constructor (data: DeviceTypeDTO) {
-    this.data = data
-    Object.freeze(this)
+    super(data)
   }
 
   static create (dataInput: DeviceTypeDataInput): Either<NameError, DeviceType> {

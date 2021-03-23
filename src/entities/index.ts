@@ -1,3 +1,4 @@
+export * from './entitie'
 export * from './device'
 export * from './deviceType'
 export * from './objectValues'
